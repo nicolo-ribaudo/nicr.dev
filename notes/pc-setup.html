@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>"
+    />
+    <meta
+      name="description"
+      content="The personal website of Nicolò Ribaudo, maintainer of Babel and member of TC39."
+    />
+    <meta property="og:title" content="Nicolò Ribaudo" />
+    <meta
+      name="description"
+      content="The personal website of Nicolò Ribaudo, maintainer of Babel and member of TC39."
+    />
+    <meta property="og:site_name" content="Nicolò Ribaudo" />
+    <meta property="og:url" content="https://nicr.dev/notes/pc-setup.html" />
+    <title>Nicolò Ribaudo</title>
+    <style>
+      pre {
+        white-space: pre-wrap;
+      }
+      details {
+        margin-left: 1.5em;
+        padding-left: 0.5em;
+        border-left: thin solid transparent;
+      }
+      details[open] {
+        border-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <pre>
+<h1>PC Setup</h1><!--
+-->This note contains information about the software I currently use on my PC, so that I know what to re-setup after a fresh install of my OS.<!--
+--><h2>Development tools</h2><!--
+-->- zsh (<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH">https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH</a>) and Oh My Zsh (<a href="https://ohmyz.sh/">https://ohmyz.sh/</a>).
+<details><summary>This is my `.zshrc` file</summary>
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="spaceship"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias gc="git checkout"
+alias gb="git checkout -b"
+
+alias suspend="exec systemctl suspend"
+
+# For Deno
+export DENO_INSTALL="/home/nic/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# For V8/Chromium
+export PATH="$PATH:/home/nic/Documents/dev/chromium.googlesource.com/chromium/tools/depot_tools"
+export DOGFOOD_STACKED_CHANGES=1
+
+# For SSH from PGP on the Yubikey
+GPG_AGENT_SOCKET="/run/user/1000/gnupg/S.gpg-agent"
+GPG_AGENT_SOCKET_REMOTE="/run/user/1000/gnupg/S.gpg-agent.from-ssh"
+if [[ -n $SSH_CONNECTION ]]; then
+  # Remote
+  if [[ "$(realpath $GPG_AGENT_SOCKET)" == $GPG_AGENT_SOCKET_REMOTE ]]; then
+    # Already running with the remote agent
+  else
+    gpgconf --kill gpg-agent
+    rm $GPG_AGENT_SOCKET 2> /dev/null || true
+    ln -s $GPG_AGENT_SOCKET_REMOTE $GPG_AGENT_SOCKET
+  fi
+else
+  # Local
+  if [[ "$(realpath $GPG_AGENT_SOCKET)" == $GPG_AGENT_SOCKET_REMOTE ]]; then
+    # Disconnect from the remote agent
+    rm $GPG_AGENT_SOCKET || true
+  fi
+  export GPG_TTY="$(tty)"
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  gpgconf --launch gpg-agent
+fi
+
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+</details><!--
+-->- SSH and GPG through my Yubikey: <a href="https://gist.github.com/nicolo-ribaudo/2d3b27778d2b248947ddbb5c48b1bc3c">https://gist.github.com/nicolo-ribaudo/2d3b27778d2b248947ddbb5c48b1bc3c</a>.
+- git and gh (<a href="https://github.com/cli/cli/blob/trunk/docs/install_linux.md">https://github.com/cli/cli/blob/trunk/docs/install_linux.md</a>).
+<details><summary>`~/.gitconfig`</summary>
+[user]
+	name = Nicolò Ribaudo
+	signingkey = AAFDA9101C58F338
+[commit]
+	gpgsign = true
+[push]
+	autoSetupRemote = true
+[core]
+	editor = code --wait --reuse-window
+[help]
+	autocorrect = 10
+[init]
+	defaultBranch = main
+[advice]
+	addEmptyPathspec = false
+[http]
+	cookiefile = /home/nic/.gitcookies
+[cinnabar]
+	version-check = 1747250594
+[alias]
+	wip = commit -m wip --no-verify
+[submodule]
+	recurse = true
+[receive]
+	denyCurrentBranch = warn
+</details><!--
+-->- vscode (<a href="https://code.visualstudio.com/docs/setup/linux">https://code.visualstudio.com/docs/setup/linux</a>).
+- n (<a href="https://github.com/tj/n">https://github.com/tj/n</a>) to then install Node.js. Make sure to install it so that it doesn't need `sudo` to run.
+  - Then install `corepack`, so that I don't have to worry about package managers.
+- Deno (<a href="https://docs.deno.com/runtime/getting_started/installation/">https://docs.deno.com/runtime/getting_started/installation/</a>)
+  - Then run `deno install --allow-net --allow-read --allow-sys --global jsr:@std/http/file-server` to install the `file-server` utility.<!--
+
+--><h2>GNOME</h2><!--
+--><h3>Settings</h3><!--
+-->- Keyboard > Compose Key: Right Alt
+- Keyboard > Shortcuts:
+  - Navigate applications and windows:
+    - Launch and switch applications: <kbd>Super</kbd> + <kbd>Space</kbd>
+    - Everything else disabled
+  - Navigation: disable Move to workspace above/below, switch to last worksapce, and switch to workspace 1
+  - Typing: disable shortcuts to switch input source
+  - Windows: disable view split shortcuts
+<h3>Gnome Tweaks settings</h3><!--
+-->- General > Over-Amplification > Enable
+- Fonts: Fira Sans Book, Roboto Slab Regular, Fira Mono Regular, Fira Sans SemiBold
+- Top Bar > Enable Date and Week Numbers, disable the rest
+<h3>Extensions</h3><!--
+-->- Gnome 4x UI Improvements (<a href="https://github.com/axxapy/gnome-ui-tune">https://github.com/axxapy/gnome-ui-tune</a>), to make the overview UI nicer.
+- Hide Top Bar (<a href="https://gitlab.gnome.org/tuxor1337/hidetopbar">https://gitlab.gnome.org/tuxor1337/hidetopbar</a>), to hide the top bar when the mouse is not close to it.
+- Tiling Shell (<a href="https://github.com/domferr/tilingshell">https://github.com/domferr/tilingshell</a>), a nice tiling manager for large screens.
+<details><summary>Config</summary>
+[/]
+enable-blur-snap-assistant=false
+enable-screen-edges-windows-suggestions=true
+enable-smart-window-border-radius=true
+enable-snap-assistant-windows-suggestions=true
+enable-tiling-system-windows-suggestions=true
+enable-window-border=false
+highlight-current-window=['']
+inner-gaps=uint32 0
+last-version-name-installed='16.4'
+layouts-json='[{"id":"Layout 1","tiles":[{"x":0,"y":0,"width":0.22,"height":0.5,"groups":[1,2]},{"x":0,"y":0.5,"width":0.22,"height":0.5,"groups":[1,2]},{"x":0.22,"y":0,"width":0.56,"height":1,"groups":[2,3]},{"x":0.78,"y":0,"width":0.22,"height":0.5,"groups":[3,4]},{"x":0.78,"y":0.5,"width":0.22,"height":0.5,"groups":[3,4]}]},{"id":"Layout 2","tiles":[{"x":0,"y":0,"width":0.22,"height":1,"groups":[1]},{"x":0.22,"y":0,"width":0.56,"height":1,"groups":[1,2]},{"x":0.78,"y":0,"width":0.22,"height":1,"groups":[2]}]},{"id":"21699962","tiles":[{"x":0,"y":0,"width":0.333251953125,"height":1,"groups":[1]},{"x":0.333251953125,"y":0,"width":0.33349609375,"height":1,"groups":[2,1]},{"x":0.666748046875,"y":0,"width":0.333251953125,"height":1,"groups":[2]}]},{"id":"21822049","tiles":[{"x":0,"y":0,"width":0.27734375,"height":1,"groups":[1]},{"x":0.27734375,"y":0,"width":0.4453125,"height":1,"groups":[2,1]},{"x":0.72265625,"y":0,"width":0.27734375,"height":1,"groups":[2]}]},{"id":"29372569","tiles":[{"x":0,"y":0,"width":0.25,"height":1,"groups":[2]},{"x":0.5,"y":0,"width":0.25,"height":1,"groups":[3,1]},{"x":0.25,"y":0,"width":0.25,"height":1,"groups":[1,2]},{"x":0.75,"y":0,"width":0.25,"height":1,"groups":[3]}]}]'
+move-window-center=['']
+outer-gaps=uint32 0
+overridden-settings="{\"org.gnome.mutter.keybindings\":{\"toggle-tiled-right\":\"['&lt;Super&gt;Right']\",\"toggle-tiled-left\":\"['&lt;Super&gt;Left']\"},\"org.gnome.desktop.wm.keybindings\":{\"maximize\":\"@as []\",\"unmaximize\":\"['&lt;Super&gt;Down']\"},\"org.gnome.mutter\":{\"edge-tiling\":\"true\"}}"
+override-window-menu=true
+selected-layouts=[['29372569'], ['29372569']]
+snap-assistant-threshold=253
+span-multiple-tiles-activation-key=['0']
+span-window-all-tiles=['&lt;Super&gt;KP_5']
+span-window-down=['&lt;Super&gt;KP_2']
+span-window-left=['&lt;Super&gt;KP_4']
+span-window-right=['&lt;Super&gt;KP_6']
+span-window-up=['&lt;Super&gt;KP_8']
+tiling-system-activation-key=['2']
+untile-window=['']
+</details><!--
+-->- User Themes (<a href="https://extensions.gnome.org/extension/19/user-themes/">https://extensions.gnome.org/extension/19/user-themes/</a>), to load custom themes and adjust the top bar style to large monitors.
+<details><summary>`~/.local/share/themes/MyTheme/gnome-shell/gnome-shell.css`</summary>
+#panel > :first-child {
+  margin-left: 1000px
+}
+#panel > :last-child {
+  margin-right: 1000px;
+}
+</details><!--
+--><h2>Other apps to install</h2><!--
+-->- Synergy (<a href="https://symless.com/synergy/downloads">https://symless.com/synergy/downloads</a>).
+- Firefox Nightly, and set is as the default browser.
+- Element (<a href="https://element.io/">https://element.io/</a>), for TC39 matrix. Note that I need another device with it installed to share the encryption keys.
+</pre>
+  </body>
+</html>
